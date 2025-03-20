@@ -1,7 +1,11 @@
 --To implement factorial
 factorial :: Int-> Int
 factorial 0 = 1         --Base case
-factorial a = a*factorial(a-1)
+factorial a
+        | a<0 =  factorial (-a)                -- | is a gaurd used in function def to specify conditions ( Similar to if-else)
+        | a>0 = a* factorial(a-1)              -- | otherwise = factorial (-a)  Catch all condition
+
+        
 
 -- To implement fibonacci
 fibonacci :: Int -> Int
@@ -21,7 +25,7 @@ power n m = n * power n (m-1)
 
 main :: IO()
 main= do
-    putStrLn("Factorial of 4 is:" ++show(factorial 4))
+    putStrLn("Factorial of 4 is:" ++show(factorial (-2)))
     putStrLn("fibonacci of 7 is:" ++show(fibonacci 7))
     putStrLn("Sum of first 6 numbers is:" ++show(recSum 6))
     putStrLn("Power:" ++show(power 6 3))
